@@ -8,8 +8,10 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl -sL https://install.meteor.com | sed s/--progress-bar/-sL/g | /bin/sh
 
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.28.0/install.sh | bash
-RUN ~/.nvm/nvm.sh
+RUN curl --location https://raw.github.com/creationix/nvm/master/install.sh | sh && \
+    sudo /bin/bash -c "echo \"[[ -s \$HOME/.nvm/nvm.sh ]] && . \$HOME/.nvm/nvm.sh\" >> /etc/profile.d/npm.sh" && \
+    echo "[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh" >> $HOME/.bashrc
+ENV PATH $HOME/.nvm/bin:$PATH
 RUN nvm install node
 
 WORKDIR ~/
