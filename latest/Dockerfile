@@ -4,12 +4,13 @@ MAINTAINER Rostislav Postrednik <rostislav@postrednik.cz>
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
-    curl \
-    sudo \
-    git \
-    build-essential \
-    libssl-dev
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+    apt-get install -y \
+        curl \
+        sudo \
+        git \
+        build-essential \
+        libssl-dev
 
 ENV NVM_DIR /usr/local/.nvm
 ENV NODE_VERSION stable
