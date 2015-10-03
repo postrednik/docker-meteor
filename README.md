@@ -1,8 +1,8 @@
-# docker automated build for meteor
+# gitlab-ci runner docker image
 
 (c) 2015 Rostislav Postrednik http://postrednik.cz
 
-https://hub.docker.com/r/postrednik/meteor/
+https://hub.docker.com/r/postrednik/gitlab-ci-runner/
 
 ## Licence
 
