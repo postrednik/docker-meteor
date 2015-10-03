@@ -12,12 +12,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         libssl-dev
 
 ENV NVM_DIR /usr/local/.nvm
-ENV NODE_VERSION stable
 
 # Install nvm
 RUN git clone https://github.com/creationix/nvm.git $NVM_DIR && \
     cd $NVM_DIR && \
-    git checkout `git describe --abbrev=0 --tags`
+    git checkout `git describe --abbrev=0 --tags` && \
+    git describe --tags `git rev-list --tags --max-count=1` > version
+
+ENV NODE_VERSION "${NVM_DIR}/$(cat version)"
 
 # Install default version of Node.js
 RUN source $NVM_DIR/nvm.sh && \
