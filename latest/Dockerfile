@@ -23,7 +23,8 @@ RUN git clone https://github.com/creationix/nvm.git $NVM_DIR && \
 RUN source $NVM_DIR/nvm.sh && \
     nvm install $NODE_VERSION && \
     nvm alias default $NODE_VERSION && \
-    nvm use default
+    nvm use default && \
+    npm i -g bower
 
 # Add nvm.sh to .bashrc for startup...
 RUN echo "source ${NVM_DIR}/nvm.sh" > $HOME/.bashrc && \
