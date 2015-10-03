@@ -24,6 +24,4 @@ RUN echo 'echo "Install node@${NODE_VER} finished."' >> $HOME/.profile
 ENTRYPOINT ["/bin/bash", "--login", "-i", "-c"]
 CMD ["bash"]
 
-RUN nvm ls
-
-# CMD ls ~/ -a
+CMD ls -a
