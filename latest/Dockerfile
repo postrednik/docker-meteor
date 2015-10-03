@@ -1,6 +1,5 @@
 FROM debian:latest
-
-MAINTAINER Rostislav Postrednik <rostislav@postrednik.cz>
+MAINTAINER Rostislav Postrednik http://postrednik.cz
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
