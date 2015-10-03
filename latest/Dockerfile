@@ -17,9 +17,10 @@ ENV NVM_DIR /usr/local/.nvm
 RUN git clone https://github.com/creationix/nvm.git $NVM_DIR && \
     cd $NVM_DIR && \
     git checkout `git describe --abbrev=0 --tags` && \
-    git describe --tags `git rev-list --tags --max-count=1` > version
+    git describe --tags `git rev-list --tags --max-count=1` > version && \
+    export NODE_VERSION=$(cat version)
 
-ENV NODE_VERSION "$(cat version)"
+# ENV NODE_VERSION "$(cat version)"
 
 # Install default version of Node.js
 RUN source $NVM_DIR/nvm.sh && \
