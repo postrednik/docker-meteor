@@ -12,7 +12,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         libssl-dev
 
 ENV NVM_DIR /usr/local/.nvm
-ENV NODE_VERSION 4.2.0
+ENV NODE_VERSION 4.2.1
 
 # Install nvm
 RUN git clone https://github.com/creationix/nvm.git $NVM_DIR && \
