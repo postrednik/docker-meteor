@@ -24,7 +24,7 @@ RUN source $NVM_DIR/nvm.sh && \
     nvm install $NODE_VERSION && \
     nvm alias default $NODE_VERSION && \
     nvm use default && \
-    npm i -g bower
+    npm i -g bower grunt-cli
 
 # Add nvm.sh to .bashrc for startup...
 RUN echo "source ${NVM_DIR}/nvm.sh" > $HOME/.bashrc && \
@@ -39,3 +39,10 @@ RUN curl -sL https://install.meteor.com | sed s/--progress-bar/-sL/g | /bin/sh
 # Install rvm & ruby
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 && \
     \curl -sSL https://get.rvm.io | bash -s stable --ruby
+
+# Install compass & sass-globbing
+RUN source /etc/profile.d/rvm.sh && \
+    gem update --system && \
+    gem install compass && \
+    gem install sass-globbing
+
