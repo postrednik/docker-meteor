@@ -41,8 +41,8 @@ RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A170311380
     \curl -sSL https://get.rvm.io | bash -s stable --ruby
 
 # Install compass & sass-globbing
-RUN source /etc/profile.d/rvm.sh && \
-    gem update --system && \
+RUN source source /usr/local/rvm/scripts/rvm
+RUN gem update --system && \
     gem install compass && \
     gem install sass-globbing
 
