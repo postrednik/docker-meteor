@@ -9,6 +9,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         sudo \
         git \
         build-essential \
+        graphicsmagick \
         libssl-dev \
         libpng-dev
 
