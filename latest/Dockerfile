@@ -9,7 +9,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         sudo \
         git \
         build-essential \
-        libssl-dev
+        libssl-dev \
+        libpng-dev
 
 ENV NVM_DIR /usr/local/.nvm
 ENV NODE_VERSION 5.4.0
