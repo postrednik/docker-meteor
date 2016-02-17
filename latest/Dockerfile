@@ -14,7 +14,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         libpng-dev
 
 ENV NVM_DIR /usr/local/.nvm
-ENV NODE_VERSION 5.4.0
+ENV NODE_VERSION 5.6.0
 
 # Install nvm
 RUN git clone https://github.com/creationix/nvm.git $NVM_DIR && \
