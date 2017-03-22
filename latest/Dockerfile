@@ -24,14 +24,14 @@ RUN git clone https://github.com/creationix/nvm.git $NVM_DIR && \
 COPY scripts/ /root/scripts/
 
 # Install default version of Node.js
-RUN /root/scripts/nvm-install.sh
+RUN chmod +x /root/scripts/nvm-install.sh && /root/scripts/nvm-install.sh
 
 # Add nvm.sh to .bashrc for startup...
 RUN echo "source ${NVM_DIR}/nvm.sh" > $HOME/.bashrc && \
     source $HOME/.bashrc
 
-ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
+# ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+# ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
 
 # Install meteor
 RUN curl -sL https://install.meteor.com | sed s/--progress-bar/-sL/g | /bin/sh
