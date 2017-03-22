@@ -23,10 +23,19 @@ RUN git clone https://github.com/creationix/nvm.git $NVM_DIR && \
 
 # Install default version of Node.js
 RUN source $NVM_DIR/nvm.sh && \
-    nvm install $NODE_VERSION && \
-    nvm alias default $NODE_VERSION && \
-    nvm use default && \
-    npm i -g bower grunt-cli
+    nvm install 0.10 && npm install -g coffee-script bower grunt-cli && \
+    nvm ls-remote | \
+    while IFS= read -r line \
+    do \
+        line="$(echo -e "${line}" | tr -d '[[:space:]]')" \
+        if [[ $line =~ ^(v)[4,5,6,7].* ]] \
+        then \
+            line=$(echo $line | tr -c -d 0-9.) \
+            nvm install $line --reinstall-packages-from=0.10 \
+        fi \
+    done && \
+    nvm alias default 7 && \
+    nvm use default
 
 # Add nvm.sh to .bashrc for startup...
 RUN echo "source ${NVM_DIR}/nvm.sh" > $HOME/.bashrc && \
