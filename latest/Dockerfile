@@ -27,11 +27,11 @@ RUN source $NVM_DIR/nvm.sh && \
     nvm ls-remote | \
     while IFS= read -r line \
     do \
-        line="$(echo -e "${line}" | tr -d '[[:space:]]')" \
-        if [[ $line =~ ^(v)[4,5,6,7].* ]] \
+        line="\$(echo -e "\${line}" | tr -d '[[:space:]]')" \
+        if [[ \$line =~ ^(v)[4,5,6,7].* ]] \
         then \
-            line=$(echo $line | tr -c -d 0-9.) \
-            nvm install $line --reinstall-packages-from=0.10 \
+            line=\$(echo \$line | tr -c -d 0-9.) \
+            nvm install \$line --reinstall-packages-from=0.10 \
         fi \
     done && \
     nvm alias default 7 && \
