@@ -24,7 +24,7 @@ RUN git clone https://github.com/creationix/nvm.git $NVM_DIR && \
 COPY scripts/ /root/scripts/
 
 # Install default version of Node.js
-RUN chmod +x /root/scripts/nvm-install.sh && /root/scripts/nvm-install.sh
+RUN chmod +x /root/scripts/nvm-install.sh && /root/scripts/nvm-install.sh && rm -Rf /root/scripts/
 
 # Add nvm.sh to .bashrc for startup...
 RUN echo "source ${NVM_DIR}/nvm.sh" > $HOME/.bashrc && \
